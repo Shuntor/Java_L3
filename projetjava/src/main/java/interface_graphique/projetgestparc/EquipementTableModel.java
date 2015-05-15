@@ -1,23 +1,28 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package interface_graphique.projetgestparc;
 
 import java.util.ArrayList;
 import java.util.List;
+import parcinfo.Equipement;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author 21408234
+ * @author KENT
  */
-public class OrdinateursTableModel extends DefaultTableModel {
+public class EquipementTableModel extends DefaultTableModel{
+    private final List<Equipement> equ;
 
-    private List<Ordinateur> ordi = new ArrayList<>();
-
-    public OrdinateursTableModel() {
-        ordi = new ArrayList<>();
+    /**
+     *
+     */
+    public EquipementTableModel() {  
+        equ = new ArrayList<>();
+    
     }
 
     @Override
@@ -55,22 +60,22 @@ public class OrdinateursTableModel extends DefaultTableModel {
 
     @Override
     public int getRowCount() {
-        if (ordi == null) {
+        if (equ == null) {
             return 0;
         }
-        return ordi.size();
+        return equ.size();
     }
 
     @Override
     public Object getValueAt(int row, int column) {
         if (column == 0) {
-            return ordi.get(row).getNom();
+            return equ.get(row).getNom();
         }
         return "";
     }
 
-    void addOrdinateur(Ordinateur ord) {
-        ordi.add(ord);
+    public void addOrdinateur(Equipement eq) {
+        equ.add(eq);
         fireTableStructureChanged();
     }
 }

@@ -11,13 +11,13 @@ package interface_graphique.projetgestparc;
 public class Locals {
     private String nom;
     private String adresse;
-    private String taille;   
+    
    
 
-    Locals(String nom, String adresse, String taille) {
+    Locals(String nom, String adresse) {
         this.nom=nom;
         this.adresse=adresse;
-        this.taille=taille;
+        
         
         
         
@@ -30,9 +30,7 @@ public class Locals {
         return adresse;
     }
 
-    public String getTaille() {
-        return taille;
-    }
+   
 
    
     

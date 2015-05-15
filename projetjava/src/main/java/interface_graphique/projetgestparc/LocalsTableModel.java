@@ -19,7 +19,7 @@ public class LocalsTableModel extends DefaultTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
 
     }
 
@@ -34,9 +34,6 @@ public class LocalsTableModel extends DefaultTableModel {
         }
         if (a == 1) {
             return "adresse";
-        }
-        if (a == 2) {
-            return "Taille (m²)";
         }
         else
         
@@ -59,9 +56,7 @@ public class LocalsTableModel extends DefaultTableModel {
                 return lcl.get(row).getNom();
             case 1:
                 return lcl.get(row).getAdresse();
-            case 2:
-                return lcl.get(row).getTaille();
-             }
+            }
                 
            /* return lcl.get(row).getAdresse();
             return lcl.get(row).getTaille();*/
