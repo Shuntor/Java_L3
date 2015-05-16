@@ -11,13 +11,13 @@ package interface_graphique.projetgestparc;
 public class Salle {
     private String nom;
     private String local;
-    private String taille;   
+      
    
 
     Salle(String nom, String local, String taille) {
         this.nom=nom;
         this.local=local;
-        this.taille=taille;
+        
         
         
         
@@ -33,9 +33,7 @@ public class Salle {
     
     
 
-    public String getTaille() {
-        return taille;
-    }
+    
 
    
     

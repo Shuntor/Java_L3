@@ -49,7 +49,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel20 = new javax.swing.JPanel();
         jButton36 = new javax.swing.JButton();
         jButton37 = new javax.swing.JButton();
-        jTextField73 = new javax.swing.JTextField();
         jLabel83 = new javax.swing.JLabel();
         jLabel84 = new javax.swing.JLabel();
         jTextField74 = new javax.swing.JTextField();
@@ -59,6 +58,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField76 = new javax.swing.JTextField();
         jTextField77 = new javax.swing.JTextField();
         jLabel87 = new javax.swing.JLabel();
+        jComboBox7 = new javax.swing.JComboBox();
         jDialogModifEquipement = new javax.swing.JDialog();
         jPanel21 = new javax.swing.JPanel();
         jButton40 = new javax.swing.JButton();
@@ -97,7 +97,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton44 = new javax.swing.JButton();
         jButton45 = new javax.swing.JButton();
         jLabel103 = new javax.swing.JLabel();
-        jTFModifNomLocal1 = new javax.swing.JTextField();
+        jTFAjoutNomSalle = new javax.swing.JTextField();
         jLabel104 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox();
         jDialogModifSalle = new javax.swing.JDialog();
@@ -179,8 +179,6 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField73.setText("jTextField1");
-
         jLabel83.setText("Salle:");
 
         jLabel84.setText("Etat:");
@@ -198,6 +196,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField77.setText("jTextField1");
 
         jLabel87.setText("Nom:");
+
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
@@ -219,12 +219,12 @@ public class NewJFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel84)
                                     .addComponent(jLabel83))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField76, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField77, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField75, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField74, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField76, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(jTextField77, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(jTextField75, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(jTextField74, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                    .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel20Layout.createSequentialGroup()
                                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel85)
@@ -253,8 +253,8 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel84))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel83))
+                    .addComponent(jLabel83)
+                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton37)
@@ -621,7 +621,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel103.setText("Local:");
 
-        jTFModifNomLocal1.setText("jTextField1");
+        jTFAjoutNomSalle.setText("jTextField1");
 
         jLabel104.setText("Nom:");
 
@@ -649,7 +649,7 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel103))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTFModifNomLocal1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(jTFAjoutNomSalle, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                             .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(26, 26, 26))
         );
@@ -659,7 +659,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel104)
-                    .addComponent(jTFModifNomLocal1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFAjoutNomSalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel103)
@@ -1343,6 +1343,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11MouseClicked
 
     private void jButton44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton44ActionPerformed
+        jDialogAjoutSalle.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton44ActionPerformed
 
@@ -1351,6 +1352,14 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton45MouseClicked
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
+        MainDataBase.addSalles(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
+        
+        Locals l=new Locals(jTFAjoutNomLocal.getText(), jComboBox5.getSelectedItem().toString());
+        ltm.addLocal(l);
+        jComboBox2.addItem(jTFAjoutNomLocal.getText());
+        jComboBox7.addItem(jTFAjoutNomLocal.getText());
+        
+        jDialogAjoutSalle.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton45ActionPerformed
 
@@ -1387,6 +1396,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jDialogAjoutSalle.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -1462,6 +1472,7 @@ public class NewJFrame extends javax.swing.JFrame {
     public static javax.swing.JComboBox jComboBox4;
     public static javax.swing.JComboBox jComboBox5;
     private javax.swing.JComboBox jComboBox6;
+    private javax.swing.JComboBox jComboBox7;
     private javax.swing.JDialog jDialogAjoutEquiment;
     private javax.swing.JDialog jDialogAjoutLocal;
     private javax.swing.JDialog jDialogAjoutSalle;
@@ -1519,10 +1530,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTFAdresseLocal;
     private javax.swing.JTextField jTFAjoutAdresseLocal;
     private javax.swing.JTextField jTFAjoutNomLocal;
+    private javax.swing.JTextField jTFAjoutNomSalle;
     private javax.swing.JTextField jTFModifAdresseLocal;
     private javax.swing.JTextField jTFModifAdresseLocal3;
     private javax.swing.JTextField jTFModifNomLocal;
-    private javax.swing.JTextField jTFModifNomLocal1;
     private javax.swing.JTextField jTFModifNomLocal2;
     private javax.swing.JTextField jTFModifNomLocal3;
     private javax.swing.JTextField jTFNom;
@@ -1534,7 +1545,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField73;
     private javax.swing.JTextField jTextField74;
     private javax.swing.JTextField jTextField75;
     private javax.swing.JTextField jTextField76;

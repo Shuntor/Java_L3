@@ -22,7 +22,7 @@ public class SalleTableModel extends DefaultTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
 
     }
 
@@ -37,9 +37,7 @@ public class SalleTableModel extends DefaultTableModel {
         if (a == 1) {
             return "Local";
         }
-        if (a == 2) {
-            return "Taille";
-        }
+        
         return null;
     }
 
@@ -58,9 +56,7 @@ public class SalleTableModel extends DefaultTableModel {
                 return lsalle.get(row).getNom();
             case 1:
                 return lsalle.get(row).getLocal();
-            case 2:
-                return lsalle.get(row).getTaille();
-             }
+            }
                 
            /* return lcl.get(row).getAdresse();
             return lcl.get(row).getTaille();*/

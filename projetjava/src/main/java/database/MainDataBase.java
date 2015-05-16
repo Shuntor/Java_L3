@@ -191,4 +191,111 @@ public class MainDataBase {
         return 0;
 
     }
+    
+    public static void addSalles (String nom, String nomLocal) {
+        
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement insertLocal = connexion.createStatement();
+            int id;
+            int idLocal;
+            id=selectIdMaxSalles();
+            idLocal=selectIdLocal(nomLocal);
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            int statut = insertLocal.executeUpdate("INSERT INTO Salles (idS, idL, numero) VALUES ('"+id+"', '"+idLocal+"', '"+nom+"');" );
+            
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static int selectIdMaxSalles(){
+            try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch ( ClassNotFoundException e ) {
+    /* Gérer les éventuelles erreurs ici. */
+        }
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        //   Connection connexion = null;
+        
+         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement selctLocalIdMax = connexion.createStatement();
+            int id;
+            id=5;
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            ResultSet resultat2 = selctLocalIdMax.executeQuery( "SELECT  max(idS)  FROM salles;" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            int idMaxSalles = resultat2.getInt( "max(idS)" );
+            
+            idMaxSalles+=1;
+            return idMaxSalles;
+            
+            //pour le moment:
+            
+            }
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return 0;
+
+    }
+    
+    public static int selectIdLocal(String nomLocal){
+        try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch ( ClassNotFoundException e ) {
+    /* Gérer les éventuelles erreurs ici. */
+        }
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        //   Connection connexion = null;
+        
+         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement selectIdLocal = connexion.createStatement();
+            int id;
+            id=5;
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            ResultSet resultat2 = selectIdLocal.executeQuery( "SELECT idL  FROM locaux WHERE nom='"+nomLocal+"';" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            int idLocal = resultat2.getInt( "idL" );
+            return idLocal;
+            
+            //pour le moment:
+            
+            }
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return 0;
+
+    }
 }
