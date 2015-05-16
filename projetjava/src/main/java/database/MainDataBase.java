@@ -11,6 +11,7 @@ import interface_graphique.projetgestparc.NewJFrame;
 import static interface_graphique.projetgestparc.NewJFrame.jComboBox4;
 import interface_graphique.projetgestparc.Ordinateur;
 import interface_graphique.projetgestparc.OrdinateursTableModel;
+import interface_graphique.projetgestparc.Salle;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -57,6 +58,34 @@ public class MainDataBase {
             
             
             
+            }
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //Recupérer les ordinateurs:
+            Statement selectLocal = connexion.createStatement();
+            ResultSet resultat3 = selectLocal.executeQuery( "SELECT * FROM salles;" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat3.next() ) {
+            int idSalle = resultat3.getInt( "idS" );
+            int idLSalle = resultat3.getInt( "idL" );            
+            String nomSalle = resultat3.getString( "numero" );
+            String nomLocalSalle=selectNomLocal(idLSalle);
+            Salle s=new Salle(nomSalle, nomLocalSalle);
+            NewJFrame.stm.addSalle(s);
+            selectNomLocal(idLSalle);
+            
+            NewJFrame.jComboBox2.addItem(nomSalle);
+            NewJFrame.jComboBox7.addItem(nomSalle);
+           // System.out.println("nom:"+nomApp+"  adresse:"+adresseLocal);
+            //jComboBox4.addItem(nomLocal);
             }
             
             
@@ -151,7 +180,8 @@ public class MainDataBase {
         }
     }*/
     
-    public static int selectIdMaxLocaux(){
+    public static String selectNomLocal(int idL){
+        
             try {
             Class.forName( "com.mysql.jdbc.Driver" );
         } catch ( ClassNotFoundException e ) {
@@ -164,6 +194,46 @@ public class MainDataBase {
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
+            Statement selctLocalIdMax = connexion.createStatement();
+            int id;
+            id=5;
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            ResultSet resultat2 = selctLocalIdMax.executeQuery( "SELECT nom  FROM locaux WHERE idL='"+idL+"';" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            String idLocal = resultat2.getString( "nom" );
+            
+            return idLocal;
+            
+            //pour le moment:
+            
+            }
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return "";
+
+    }
+    
+    public static int selectIdMaxLocaux(){
+            try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch ( ClassNotFoundException e ) {
+    /* Gérer les éventuelles erreurs ici. */
+        }
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        //   Connection connexion = null;
+        
+         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            
             Statement selctLocalIdMax = connexion.createStatement();
             int id;
             id=5;

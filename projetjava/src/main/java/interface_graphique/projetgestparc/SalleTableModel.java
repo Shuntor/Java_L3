@@ -55,7 +55,7 @@ public class SalleTableModel extends DefaultTableModel {
             case 0:
                 return lsalle.get(row).getNom();
             case 1:
-                return lsalle.get(row).getLocal();
+                return lsalle.get(row).getNomLocalSalle();
             }
                 
            /* return lcl.get(row).getAdresse();
@@ -64,7 +64,7 @@ public class SalleTableModel extends DefaultTableModel {
             
         }
 
-    void addSalle(Salle sal) {
+    public void addSalle(Salle sal) {
         lsalle.add(sal);
         fireTableStructureChanged();
     }

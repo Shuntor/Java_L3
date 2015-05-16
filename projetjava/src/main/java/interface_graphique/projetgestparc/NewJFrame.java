@@ -19,7 +19,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     public static EquipementTableModel etm;
     public static LocalsTableModel ltm;
-    private SalleTableModel stm;
+    public static SalleTableModel stm;
     /**
      * Creates new form NewJFrame
      */
@@ -159,6 +159,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
 
         jDialogAjoutEquiment.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutEquiment.setModal(true);
 
         jButton36.setText("Annuler");
         jButton36.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +275,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogModifEquipement.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogModifEquipement.setModal(true);
 
         jButton40.setText("Annuler");
         jButton40.addActionListener(new java.awt.event.ActionListener() {
@@ -394,6 +396,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jDialogSupprEquipement.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogSupprEquipement.setModal(true);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -417,6 +422,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogAjoutLocal.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutLocal.setModal(true);
 
         jButton38.setText("Annuler");
         jButton38.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -505,6 +511,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogModifLocal.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogModifLocal.setModal(true);
 
         jButton42.setText("Annuler");
         jButton42.addActionListener(new java.awt.event.ActionListener() {
@@ -588,6 +595,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogSupprLocal.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogSupprLocal.setModal(true);
 
         javax.swing.GroupLayout jDialogSupprLocalLayout = new javax.swing.GroupLayout(jDialogSupprLocal.getContentPane());
         jDialogSupprLocal.getContentPane().setLayout(jDialogSupprLocalLayout);
@@ -599,6 +607,9 @@ public class NewJFrame extends javax.swing.JFrame {
             jDialogSupprLocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
+
+        jDialogAjoutSalle.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutSalle.setModal(true);
 
         jButton44.setText("Annuler");
         jButton44.addActionListener(new java.awt.event.ActionListener() {
@@ -621,7 +632,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel103.setText("Local:");
 
-        jTFAjoutNomSalle.setText("jTextField1");
+        jTFAjoutNomSalle.setMinimumSize(new java.awt.Dimension(400, 380));
 
         jLabel104.setText("Nom:");
 
@@ -640,16 +651,16 @@ public class NewJFrame extends javax.swing.JFrame {
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jButton44, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton45, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel104)
                             .addComponent(jLabel103))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTFAjoutNomSalle, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                            .addComponent(jTFAjoutNomSalle, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(26, 26, 26))
         );
@@ -681,6 +692,9 @@ public class NewJFrame extends javax.swing.JFrame {
             jDialogAjoutSalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jDialogModifSalle.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogModifSalle.setModal(true);
 
         jButton46.setText("Annuler");
         jButton46.addActionListener(new java.awt.event.ActionListener() {
@@ -765,6 +779,9 @@ public class NewJFrame extends javax.swing.JFrame {
             jDialogModifSalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jDialogSupprSalle.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogSupprSalle.setModal(true);
 
         jButton48.setText("Annuler");
         jButton48.addActionListener(new java.awt.event.ActionListener() {
@@ -1290,6 +1307,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton39MouseClicked
         MainDataBase.addLocaux(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
+        MainDataBase.initApp();
         
         Locals l=new Locals(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
         ltm.addLocal(l);
@@ -1354,10 +1372,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
         MainDataBase.addSalles(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
         
-        Locals l=new Locals(jTFAjoutNomLocal.getText(), jComboBox5.getSelectedItem().toString());
-        ltm.addLocal(l);
-        jComboBox2.addItem(jTFAjoutNomLocal.getText());
-        jComboBox7.addItem(jTFAjoutNomLocal.getText());
+        Salle s=new Salle(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
+        stm.addSalle(s);
+        jComboBox2.addItem(jTFAjoutNomSalle.getText());
+        jComboBox7.addItem(jTFAjoutNomSalle.getText());
         
         jDialogAjoutSalle.dispose();
         // TODO add your handling code here:
@@ -1467,12 +1485,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     public static javax.swing.JComboBox jComboBox4;
     public static javax.swing.JComboBox jComboBox5;
     private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JComboBox jComboBox7;
+    public static javax.swing.JComboBox jComboBox7;
     private javax.swing.JDialog jDialogAjoutEquiment;
     private javax.swing.JDialog jDialogAjoutLocal;
     private javax.swing.JDialog jDialogAjoutSalle;

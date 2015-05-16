@@ -10,28 +10,24 @@ package interface_graphique.projetgestparc;
  */
 public class Salle {
     private String nom;
-    private String local;
-      
+    
+    private String nomLocalSalle; 
    
 
-    Salle(String nom, String local, String taille) {
+    public Salle(String nom, String nomLocalSalle) {
         this.nom=nom;
-        this.local=local;
-        
-        
-        
-        
+        this.nomLocalSalle=nomLocalSalle;
     }
 
-    public String getLocal() {
-        return local;
-    }
+    
 
     public String getNom() {
         return nom;  
     }
     
-    
+    public String getNomLocalSalle() {
+        return nomLocalSalle;  
+    }
 
     
 
