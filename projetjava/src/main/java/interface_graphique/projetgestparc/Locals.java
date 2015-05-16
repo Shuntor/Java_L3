@@ -14,7 +14,7 @@ public class Locals {
     
    
 
-    Locals(String nom, String adresse) {
+    public Locals(String nom, String adresse) {
         this.nom=nom;
         this.adresse=adresse;
         

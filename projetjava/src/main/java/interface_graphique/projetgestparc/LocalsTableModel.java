@@ -66,7 +66,7 @@ public class LocalsTableModel extends DefaultTableModel {
         
     
 
-    void addLocal(Locals lc) {
+    public void addLocal(Locals lc) {
         lcl.add(lc);
         fireTableStructureChanged();
     }

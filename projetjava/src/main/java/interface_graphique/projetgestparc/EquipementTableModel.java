@@ -74,7 +74,7 @@ public class EquipementTableModel extends DefaultTableModel{
         return "";
     }
 
-    public void addOrdinateur(Equipement eq) {
+    public void addEquipement(Equipement eq) {
         equ.add(eq);
         fireTableStructureChanged();
     }

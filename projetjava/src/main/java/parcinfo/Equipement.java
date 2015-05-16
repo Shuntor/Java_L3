@@ -5,15 +5,14 @@ public class Equipement {
     
     private String nom;
     private String adresse;
-    private String salle;   
-    private String local;
+    private int salle;   
+   
     private String etat;
-    private String os;
+    private int os;
 
-    Equipement(String nom, String adresse, String salle, String local, String etat, String os) {
+    public Equipement(String nom, String adresse, int salle, String etat, int os) {
         this.nom=nom;
-        this.adresse=adresse;
-        this.local=local;
+        this.adresse=adresse; 
         this.salle=salle;
         this.etat=etat;
         this.os=os;
@@ -29,19 +28,16 @@ public class Equipement {
         return adresse;
     }
 
-    public String getSalle() {
+    public int getSalle() {
         return salle;
     }
 
-    public String getLocal() {
-        return local;
-    }
-
+    
     public String getEtat() {
         return etat;
     }
 
-    public String getOs() {
+    public int getOs() {
         return os;
     }
 }
