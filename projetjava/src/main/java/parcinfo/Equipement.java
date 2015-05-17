@@ -6,13 +6,14 @@ public class Equipement {
     private String nom;
     private String adresse;
     private int salle;   
-   
+    private String type; 
     private String etat;
     private int os;
 
     public Equipement(String nom, String adresse, int salle, String etat, int os) {
         this.nom=nom;
         this.adresse=adresse; 
+        this.type=type;
         this.salle=salle;
         this.etat=etat;
         this.os=os;
