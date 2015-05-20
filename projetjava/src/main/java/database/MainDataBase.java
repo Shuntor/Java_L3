@@ -19,6 +19,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import parcinfo.Equipement;
+import java.util.*;
+
 
 /**
  *
@@ -39,10 +41,9 @@ public class MainDataBase {
         String motDePasse = "";
         //   Connection connexion = null;
         
-        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
-            //Recupérer les locaux:
-            //NewJFrame.ltm=new LocalsTableModel();
-            Statement selectSalle = connexion.createStatement();
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse); //Recupérer les locaux:
+        //NewJFrame.ltm=new LocalsTableModel();
+                Statement selectSalle = connexion.createStatement()){
             ResultSet resultat = selectSalle.executeQuery( "SELECT * FROM locaux;" );
             //Boucle permettant de récupérer tous les ordinateurs:
             while ( resultat.next() ) {
@@ -61,9 +62,6 @@ public class MainDataBase {
             
             }
             
-            
-            /* Ici, nous placerons nos requêtes vers la BDD */
-            /* ... */
            
         } catch (SQLException e) {
             e.printStackTrace();
@@ -100,20 +98,22 @@ public class MainDataBase {
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //Recupérer les ordinateurs:
             Statement selectEquipement = connexion.createStatement();
-            ResultSet resultat2 = selectEquipement.executeQuery( "SELECT nom, typeA, adrMac, idS, idO  FROM appareils;" );
+            ResultSet resultat2 = selectEquipement.executeQuery( "SELECT nom, typeA, adrMac, idS, idO, etat  FROM appareils;" );
             //Boucle permettant de récupérer tous les ordinateurs:
             while ( resultat2.next() ) {
-            int idAppareil = resultat2.getInt( "id" );
+            //int idAppareil = resultat2.getInt( "idA" );
             String nomAppareil = resultat2.getString( "nom" );
             String typeAppareil = resultat2.getString( "typeA" );
             String adrMacAppareil = resultat2.getString( "adrMac" );
             int idSalleAppareil = resultat2.getInt( "idS" );
             int idOs = resultat2.getInt( "idO" );
+            String etatAppareil = resultat2.getString( "etat" );
             
-            //pour le moment:
-            String etatA= "En Service";
+            String nomSalleAppareil=selectNomSalle(idSalleAppareil);
+            String nomOs=selectNomOs(idOs);
             
-            Equipement e=new Equipement(nomAppareil, adrMacAppareil, idSalleAppareil, etatA, idOs);
+            
+            Equipement e=new Equipement(nomAppareil, adrMacAppareil, typeAppareil, nomSalleAppareil, nomOs, etatAppareil);
             NewJFrame.etm.addEquipement(e);
            // System.out.println("nom:"+nomApp+"  adresse:"+adresseLocal);
             //jComboBox4.addItem(nomLocal);
@@ -131,12 +131,12 @@ public class MainDataBase {
             //Recupérer les locaux:
             //NewJFrame.ltm=new LocalsTableModel();
             Statement selectOs = connexion.createStatement();
-            ResultSet resultat = selectOs.executeQuery( "SELECT * FROM Os;" );
+            ResultSet resultat4 = selectOs.executeQuery( "SELECT * FROM Os;" );
             //Boucle permettant de récupérer tous les ordinateurs:
-            while ( resultat.next() ) {
-            int idLocal = resultat.getInt( "idO" );
-            String nom = resultat.getString( "nom" );
-            String version = resultat.getString( "version" );
+            while ( resultat4.next() ) {
+            int idLocal = resultat4.getInt( "idO" );
+            String nom = resultat4.getString( "nom" );
+            String version = resultat4.getString( "version" );
             //NewJFrame.ltm=new LocalsTableModel();
             
             //System.out.println("nom:"+nomLocal+"  adresse:"+adresseLocal);
@@ -155,6 +155,84 @@ public class MainDataBase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public static String selectNomSalle(int idSalle){
+        try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch ( ClassNotFoundException e ) {
+    /* Gérer les éventuelles erreurs ici. */
+        }
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        //   Connection connexion = null;
+        
+         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement selectNomSalle = connexion.createStatement();
+            
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            ResultSet resultat2 = selectNomSalle.executeQuery( "SELECT numero  FROM salles WHERE idS='"+idSalle+"';" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            String nomSalle = resultat2.getString( "numero" );
+            return nomSalle;
+            
+            //pour le moment:
+            
+            }
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return "";
+
+    }
+    
+    public static String selectNomOs(int idOs){
+        try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch ( ClassNotFoundException e ) {
+    /* Gérer les éventuelles erreurs ici. */
+        }
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        //   Connection connexion = null;
+        
+         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement selectNomOs = connexion.createStatement();
+            
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            ResultSet resultat2 = selectNomOs.executeQuery( "SELECT nom, version  FROM Os WHERE idO='"+idOs+"';" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            String nomOs = resultat2.getString( "nom" );
+            String version = resultat2.getString("version");
+            String nom=(nomOs+"-"+version);
+            return nom;
+            
+            //pour le moment:
+            
+            }
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return "";
+
     }
     
     public static void addLocaux (String nom, String adresse) {
@@ -400,7 +478,7 @@ public class MainDataBase {
     }
     
     
-    public static void addEquipement(String nomEquipement,String adresseEquipement, String osEquipement, String etatEquipement, String salleEquipement){
+    public static void addEquipement(String nomEquipement,String adresseEquipement, String osEquipement, String etatEquipement, String salleEquipement, String typeEquipement){
         String url = "jdbc:mysql://localhost:3306/bdgestionparc";
         String utilisateur = "root";
         String motDePasse = "";
@@ -408,12 +486,23 @@ public class MainDataBase {
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
             Statement insertLocal = connexion.createStatement();
-            int id;
-            int idSalle;
+            int id, i=1;
+            int idSalle, idOs;
+            String nomOsEquipement="";
             id=selectIdMaxEquipement();
             idSalle=selectIdSalle(salleEquipement);
+            
+            StringTokenizer tokenizer = new StringTokenizer(osEquipement, "-");
+
+            while ( i==1) {
+                nomOsEquipement=tokenizer.nextToken();
+                i++;
+            }
+                
+            idOs=selectIdOs(nomOsEquipement);
+            System.out.println("idOs="+idOs);
             //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
-            int statut = insertLocal.executeUpdate("INSERT INTO Salles (idA, nom, typeA, adrMac, idS, idO, etat) VALUES ('"+id+"', '"+nomEquipement+"', '"+idLocal+"', '"+nom+"');" );
+            int statut = insertLocal.executeUpdate("INSERT INTO Appareils (idA, nom, typeA, adrMac, idS, idO, etat) VALUES ('"+id+"', '"+nomEquipement+"', '"+typeEquipement+"', '"+adresseEquipement+"', '"+idSalle+"', '"+idOs+"', '"+etatEquipement+"');" );
             
             
             
@@ -485,7 +574,7 @@ public class MainDataBase {
             int id;
             id=5;
             //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
-            ResultSet resultat2 = selectIdLocal.executeQuery( "SELECT idS  FROM Salles WHERE nom='"+nomSalle+"';" );
+            ResultSet resultat2 = selectIdLocal.executeQuery( "SELECT idS  FROM Salles WHERE numero='"+nomSalle+"';" );
             //Boucle permettant de récupérer tous les ordinateurs:
             while ( resultat2.next() ) {
             int idSalle = resultat2.getInt( "idS" );
@@ -507,6 +596,44 @@ public class MainDataBase {
 
     }
     
+     public static int selectIdOs(String nomOs){
+        try {
+            Class.forName( "com.mysql.jdbc.Driver" );
+        } catch ( ClassNotFoundException e ) {
+    /* Gérer les éventuelles erreurs ici. */
+        }
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        //   Connection connexion = null;
+        
+         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement selectIdLocal = connexion.createStatement();
+            int id;
+            id=5;
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            ResultSet resultat2 = selectIdLocal.executeQuery( "SELECT idO  FROM OS WHERE nom='"+nomOs+"';" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            int idOs = resultat2.getInt( "idO" );
+            return idOs;
+            
+            //pour le moment:
+            
+            }
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return 0;
+
+    }
     
     public static void addOs(String nomOs,String versionOs){
         String url = "jdbc:mysql://localhost:3306/bdgestionparc";
@@ -574,4 +701,57 @@ public class MainDataBase {
         return 0;
 
     }
+    
+    public static void supprEquipement(String nomEquipement, String adresseEquipement, String typeEquipement, String salleEquipement, String etatEquipement, String osEquipement){
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement delEquipement = connexion.createStatement();
+            int id;
+            
+            
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            int statut = delEquipement.executeUpdate("DELETE FROM appareils WHERE (adrMac ='"+adresseEquipement+"');" );
+            
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
+    public static void supprSalle(String nom, String Local){
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement delEquipement = connexion.createStatement();
+            int idS;
+            idS=selectIdSalle(nom);
+            
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            int statut = delEquipement.executeUpdate("DELETE FROM salles WHERE (idS ='"+idS+"');" );
+            
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+    }
+    
 }

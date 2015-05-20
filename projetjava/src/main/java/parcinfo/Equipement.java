@@ -5,12 +5,12 @@ public class Equipement {
     
     private String nom;
     private String adresse;
-    private int salle;   
+    private String salle;   
     private String type; 
     private String etat;
-    private int os;
+    private String os;
 
-    public Equipement(String nom, String adresse, int salle, String etat, int os) {
+    public Equipement(String nom, String adresse, String type, String salle, String os, String etat) {
         this.nom=nom;
         this.adresse=adresse; 
         this.type=type;
@@ -29,16 +29,20 @@ public class Equipement {
         return adresse;
     }
 
-    public int getSalle() {
+    public String getSalle() {
         return salle;
     }
 
+    public String getType(){
+        return type;
+    }
+            
     
     public String getEtat() {
         return etat;
     }
 
-    public int getOs() {
+    public String getOs() {
         return os;
     }
 }

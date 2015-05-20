@@ -68,4 +68,9 @@ public class SalleTableModel extends DefaultTableModel {
         lsalle.add(sal);
         fireTableStructureChanged();
     }
+    
+    public void supprSalle(int row) {
+        lsalle.remove(row);
+        fireTableStructureChanged();
+    }
 }

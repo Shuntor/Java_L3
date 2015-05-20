@@ -59,6 +59,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jComboBox7 = new javax.swing.JComboBox();
         jComboBoxAjoutEquipementEtat = new javax.swing.JComboBox();
         jComboBoxAjoutEquipementOs = new javax.swing.JComboBox();
+        jComboBox9 = new javax.swing.JComboBox();
+        jLabel88 = new javax.swing.JLabel();
         jDialogModifEquipement = new javax.swing.JDialog();
         jPanel21 = new javax.swing.JPanel();
         jButton40 = new javax.swing.JButton();
@@ -75,6 +77,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel97 = new javax.swing.JLabel();
         jDialogSupprEquipement = new javax.swing.JDialog();
         jPanel5 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jDialogAjoutLocal = new javax.swing.JDialog();
         jPanel22 = new javax.swing.JPanel();
         jButton38 = new javax.swing.JButton();
@@ -112,11 +117,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel26 = new javax.swing.JPanel();
         jButton48 = new javax.swing.JButton();
         jButton49 = new javax.swing.JButton();
-        jLabel107 = new javax.swing.JLabel();
-        jTFModifAdresseLocal3 = new javax.swing.JTextField();
-        jTFModifNomLocal3 = new javax.swing.JTextField();
-        jLabel108 = new javax.swing.JLabel();
-        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jLabel12 = new javax.swing.JLabel();
         jDialogAjoutOs = new javax.swing.JDialog();
         jPanel27 = new javax.swing.JPanel();
         jButton50 = new javax.swing.JButton();
@@ -214,6 +215,10 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jComboBoxAjoutEquipementEtat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Marche ", "Arrêt ", "Hors Service" }));
 
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Switch", "Routeur ", "Ordinateur", "Tablette", "Telephone", "Serveur" }));
+
+        jLabel88.setText("Type:");
+
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
         jPanel20.setLayout(jPanel20Layout);
         jPanel20Layout.setHorizontalGroup(
@@ -232,9 +237,11 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel84)
                             .addComponent(jLabel83)
                             .addComponent(jLabel85)
-                            .addComponent(jLabel86))
+                            .addComponent(jLabel86)
+                            .addComponent(jLabel88))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTFAjoutEquipementAdresse, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                             .addComponent(jTFAjoutEquipementNom, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                             .addComponent(jComboBox7, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -265,7 +272,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel83)
                     .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel88))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton37)
                     .addComponent(jButton36))
@@ -408,15 +419,52 @@ public class NewJFrame extends javax.swing.JFrame {
         jDialogSupprEquipement.setMinimumSize(new java.awt.Dimension(400, 380));
         jDialogSupprEquipement.setModal(true);
 
+        jLabel9.setText("Etes-vous sûr de vouloir supprimer l'équipement ?");
+
+        jButton7.setText("Annuler");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
+        jButton12.setText("OK");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel9)
+                .addContainerGap(83, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton12)
+                .addGap(61, 61, 61))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton12))
+                .addGap(72, 72, 72))
         );
 
         javax.swing.GroupLayout jDialogSupprEquipementLayout = new javax.swing.GroupLayout(jDialogSupprEquipement.getContentPane());
@@ -811,55 +859,33 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel107.setText("Adresse:");
-
-        jTFModifAdresseLocal3.setText("jTextField1");
-
-        jTFModifNomLocal3.setText("jTextField1");
-
-        jLabel108.setText("Nom:");
+        jLabel12.setText("Etes-vous sûre de vouloir supprimer cette salle?");
 
         javax.swing.GroupLayout jPanel26Layout = new javax.swing.GroupLayout(jPanel26);
         jPanel26.setLayout(jPanel26Layout);
         jPanel26Layout.setHorizontalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
-                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel26Layout.createSequentialGroup()
-                                .addComponent(jLabel108)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
-                                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFModifAdresseLocal3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTFModifNomLocal3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel26Layout.createSequentialGroup()
-                                .addComponent(jLabel107)
-                                .addGap(291, 291, 291)))))
-                .addGap(26, 26, 26))
+                .addGap(33, 33, 33)
+                .addComponent(jButton48, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton49, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
+            .addGroup(jPanel26Layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel12)
+                .addGap(26, 93, Short.MAX_VALUE))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel26Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel108)
-                    .addComponent(jTFModifNomLocal3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel107)
-                    .addComponent(jTFModifAdresseLocal3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(160, 160, 160)
+                .addGap(105, 105, 105)
+                .addComponent(jLabel12)
+                .addGap(85, 85, 85)
                 .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton49)
                     .addComponent(jButton48))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jDialogSupprSalleLayout = new javax.swing.GroupLayout(jDialogSupprSalle.getContentPane());
@@ -991,6 +1017,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel6.setText("Etat:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Marche", "Arrêt", "Hors Service" }));
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Switch", "Routeur ", "Ordinateur", "Tablette", "Telephone", "Serveur" }));
 
         jTable1.setModel(etm);
         jScrollPane2.setViewportView(jTable1);
@@ -1396,10 +1424,10 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton37MouseClicked
-        /*MainDataBase.addEquipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString(), jComboBox7.getSelectedItem().toString());
+        MainDataBase.addEquipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString(), jComboBox7.getSelectedItem().toString(),jComboBox9.getSelectedItem().toString());
         
-        Salle s=new Salle(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
-        stm.addSalle(s);*/
+        Equipement e=new Equipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(),jComboBox9.getSelectedItem().toString(),jComboBox7.getSelectedItem().toString(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString());
+        etm.addEquipement(e);
 
         
         
@@ -1426,7 +1454,8 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton41ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
-        jDialogSupprEquipement.setVisible(true); 
+        jDialogSupprEquipement.setVisible(true);
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4MouseClicked
 
@@ -1486,6 +1515,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
+        jDialogSupprSalle.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11MouseClicked
 
@@ -1523,14 +1553,60 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton47ActionPerformed
 
     private void jButton48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton48ActionPerformed
+        jDialogSupprSalle.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton48ActionPerformed
 
     private void jButton49MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton49MouseClicked
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton49MouseClicked
 
     private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
+        int ligneSelectionne2 = jTable3.getSelectedRow();
+        //on récupére la valeur de la première colonne de la ligne sélectionné
+        Object nomSalle=jTable3.getValueAt(ligneSelectionne2, 0);
+        String nomS=nomSalle.toString();
+        Object localSalle=jTable1.getValueAt(ligneSelectionne2, 1);
+        String localS=localSalle.toString(); 
+        stm.supprSalle(ligneSelectionne2);
+        jComboBox2.removeItem(nomSalle);
+        jComboBox7.removeItem(nomSalle);
+        
+        int i;
+        
+        int verif=0;
+        while(verif==0){
+            int nbLignejTable1=jTable1.getRowCount();
+            System.out.println("nbLignejTable1="+nbLignejTable1);
+            for (i=0;i<nbLignejTable1;i++){            
+              Object nomEquipement=jTable1.getValueAt(i, 0);
+              String nomEqu=nomEquipement.toString();
+              Object adresseEquipement=jTable1.getValueAt(i, 1);
+              String adresseEqu=adresseEquipement.toString();
+              Object typeEquipement=jTable1.getValueAt(i, 2);
+              String typeEqu=typeEquipement.toString();
+              Object salleEquipement=jTable1.getValueAt(i, 3);
+              String salleEqu=salleEquipement.toString();
+              Object etatEquipement=jTable1.getValueAt(i, 4);
+              String etatEqu=etatEquipement.toString();
+              Object osEquipement=jTable1.getValueAt(i, 5);
+              String osEqu=osEquipement.toString();
+            
+              if(salleEqu.equals(nomSalle) == true)
+              {
+                  etm.supprEquipement(i);
+                  MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
+                  break;
+              }//if
+            }//for
+            if(i==nbLignejTable1){
+                verif=1;
+            }
+        }//while
+        MainDataBase.supprSalle(nomS, localS);
+        
+        jDialogSupprSalle.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton49ActionPerformed
 
@@ -1588,6 +1664,39 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox7ActionPerformed
 
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        jDialogSupprEquipement.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        int ligneSelectionne = jTable1.getSelectedRow();
+        //on récupére la valeur de la première colonne de la ligne sélectionné
+        Object nomEquipement=jTable1.getValueAt(ligneSelectionne, 0);
+        String nomEqu=nomEquipement.toString();
+        Object adresseEquipement=jTable1.getValueAt(ligneSelectionne, 1);
+        String adresseEqu=adresseEquipement.toString();
+        Object typeEquipement=jTable1.getValueAt(ligneSelectionne, 2);
+        String typeEqu=typeEquipement.toString();
+        Object salleEquipement=jTable1.getValueAt(ligneSelectionne, 3);
+        String salleEqu=salleEquipement.toString();
+        Object etatEquipement=jTable1.getValueAt(ligneSelectionne, 4);
+        String etatEqu=etatEquipement.toString();
+        Object osEquipement=jTable1.getValueAt(ligneSelectionne, 5);
+        String osEqu=osEquipement.toString();
+        System.out.println("ligneSelectionne="+ligneSelectionne);
+        etm.supprEquipement(ligneSelectionne);
+        MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
+        //jTable1.removeRowSelectionInterval(ligneSelectionne, ligneSelectionne);
+        jDialogSupprEquipement.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12MouseClicked
+
+   
     
     /**
      * @param args the command line arguments
@@ -1634,6 +1743,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton36;
@@ -1655,6 +1765,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton50;
     private javax.swing.JButton jButton51;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox jComboBox1;
@@ -1665,6 +1776,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox6;
     public static javax.swing.JComboBox jComboBox7;
     public static javax.swing.JComboBox jComboBox8;
+    private javax.swing.JComboBox jComboBox9;
     public static javax.swing.JComboBox jComboBoxAjoutEquipementEtat;
     public static javax.swing.JComboBox jComboBoxAjoutEquipementOs;
     private javax.swing.JDialog jDialogAjoutEquiment;
@@ -1685,11 +1797,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel105;
     private javax.swing.JLabel jLabel106;
-    private javax.swing.JLabel jLabel107;
-    private javax.swing.JLabel jLabel108;
     private javax.swing.JLabel jLabel109;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1702,6 +1813,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabel92;
     private javax.swing.JLabel jLabel93;
@@ -1722,7 +1835,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -1733,10 +1845,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTFAjoutNomLocal;
     private javax.swing.JTextField jTFAjoutNomSalle;
     private javax.swing.JTextField jTFModifAdresseLocal;
-    private javax.swing.JTextField jTFModifAdresseLocal3;
     private javax.swing.JTextField jTFModifNomLocal;
     private javax.swing.JTextField jTFModifNomLocal2;
-    private javax.swing.JTextField jTFModifNomLocal3;
     private javax.swing.JTextField jTFNom;
     private javax.swing.JTextField jTFNomLocal;
     private javax.swing.JTextField jTFNomSalle;

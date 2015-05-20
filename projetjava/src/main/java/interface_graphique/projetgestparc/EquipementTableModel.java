@@ -7,14 +7,15 @@ package interface_graphique.projetgestparc;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.AbstractTableModel;
 import parcinfo.Equipement;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author KENT
  */
-public class EquipementTableModel extends DefaultTableModel{
+public class EquipementTableModel extends AbstractTableModel{
     private final List<Equipement> equ;
 
     /**
@@ -43,7 +44,7 @@ public class EquipementTableModel extends DefaultTableModel{
             return "@MAC";
         }
         if (a == 2) {
-            return "Local";
+            return "Type";
         }
         if (a == 3) {
             return "Salle";
@@ -52,7 +53,7 @@ public class EquipementTableModel extends DefaultTableModel{
             return "Etat";
         }
         if (a == 5) {
-            return "SystÃ¨me d'exploitation";
+            return "Système d'exploitation";
         }
         
         return null;
@@ -68,14 +69,31 @@ public class EquipementTableModel extends DefaultTableModel{
 
     @Override
     public Object getValueAt(int row, int column) {
-        if (column == 0) {
-            return equ.get(row).getNom();
-        }
-        return "";
+        switch(column){
+            case 0:
+                return equ.get(row).getNom();
+            case 1:
+                return equ.get(row).getAdresse();
+            case 2:
+                return equ.get(row).getType();
+            case 3:
+                return equ.get(row).getSalle();
+            case 4:
+                return equ.get(row).getEtat();
+            case 5:
+                return equ.get(row).getOs();
+            
+            }
+        return null;
     }
 
     public void addEquipement(Equipement eq) {
         equ.add(eq);
+        fireTableStructureChanged();
+    }
+    
+    public void supprEquipement(int row) {
+        equ.remove(row);
         fireTableStructureChanged();
     }
 }
