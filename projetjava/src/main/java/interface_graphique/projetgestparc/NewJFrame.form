@@ -2055,14 +2055,16 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jScrollPane6" min="-2" pref="1007" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jComboBox12" min="-2" pref="132" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
-                                  <Component id="jButtonNouvelleSimu" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="jButton17" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jButtonNouvelleSimu" min="-2" pref="139" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="77" max="32767" attributes="0"/>
@@ -2077,6 +2079,7 @@
                               <Component id="jComboBox12" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButtonNouvelleSimu" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="29" max="32767" attributes="0"/>
                           <Component id="jScrollPane6" min="-2" pref="454" max="-2" attributes="0"/>
@@ -2101,6 +2104,7 @@
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="NewJFrame_jTable1"/>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>
@@ -2126,6 +2130,14 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonNouvelleSimuMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton17">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="D&#xe9;sactiver l&apos;equipement"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton17MouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

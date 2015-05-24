@@ -195,6 +195,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jComboBox12 = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
         jButtonNouvelleSimu = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
 
         jDialogAjoutEquiment.setMinimumSize(new java.awt.Dimension(400, 380));
         jDialogAjoutEquiment.setLocationRelativeTo(null);
@@ -1539,20 +1540,29 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton17.setText("Désactiver l'equipement");
+        jButton17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton17MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(341, 341, 341)
-                        .addComponent(jButtonNouvelleSimu)))
+                        .addGap(78, 78, 78)
+                        .addComponent(jButton17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonNouvelleSimu, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
@@ -1562,7 +1572,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16)
-                    .addComponent(jButtonNouvelleSimu))
+                    .addComponent(jButtonNouvelleSimu)
+                    .addComponent(jButton17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
@@ -2124,6 +2135,16 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNouvelleSimuMouseClicked
 
+    private void jButton17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton17MouseClicked
+        String equipementHS=(jComboBox12.getSelectedItem().toString());
+        MainDataBase.impacter(equipementHS);
+        
+        
+        
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton17MouseClicked
+
    
     
     /**
@@ -2177,6 +2198,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton36;
@@ -2302,7 +2324,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
+    public static javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField83;
     private javax.swing.JTextField jTextField84;

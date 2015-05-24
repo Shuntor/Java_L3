@@ -8,6 +8,7 @@ package database;
 import interface_graphique.projetgestparc.Locals;
 import interface_graphique.projetgestparc.LocalsTableModel;
 import interface_graphique.projetgestparc.NewJFrame;
+import static interface_graphique.projetgestparc.NewJFrame.etmSimu;
 import static interface_graphique.projetgestparc.NewJFrame.jComboBox4;
 import static interface_graphique.projetgestparc.NewJFrame.jComboBox7;
 import interface_graphique.projetgestparc.Ordinateur;
@@ -1030,5 +1031,139 @@ public class MainDataBase {
             e.printStackTrace();
         }
     }
+    
+    
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //  Simulation:                                                                                                             //
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public static void impacter(String nomEquipementHS){
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //Recupérer l'id de l'ordinateur concerné:
+            int idEquipementHS=selectIdEquipement(nomEquipementHS);
+            Equipement equipementHS=selectEquipement(idEquipementHS);
+            Statement selectConnexion = connexion.createStatement();
+            
+            
+            
+            
+            ResultSet resultat = selectConnexion.executeQuery( "SELECT idAppareilB FROM Connecter WHERE idAppareilA= '"+idEquipementHS+"';" );
+            //
+            while ( resultat.next() ) {
+            int idEquipementImpacte = resultat.getInt( "idAppareilB" );
+            Equipement equipementImpacte = selectEquipement(idEquipementImpacte);
+            
+            int j;
+            int nbLignejTable51=NewJFrame.jTable5.getRowCount();
+            boolean trouve=false;
+            for(j=0;j<nbLignejTable51 && trouve==false;j++){
+                Object equipement=NewJFrame.jTable5.getValueAt(j, 0);
+                String nomEquipement=equipement.toString();
+                
+                if(equipementHS.getNom().equals(nomEquipement)){
+                    NewJFrame.etmSimu.supprEquipement(j);
+                    trouve=true;
+                }
+                
+            }
+            
+            equipementHS.setEtat("HS");
+            Equipement e= new Equipement(equipementHS.getNom(), equipementHS.getAdresse(), equipementHS.getType(), equipementHS.getSalle(), equipementHS.getOs(), equipementHS.getEtat());
+            NewJFrame.etmSimu.addEquipement(e);
+            
+            //on cherche dans la jTable:
+            int nbLignejTable52=NewJFrame.jTable5.getRowCount();
+            int i;
+            boolean trouve2=false;
+            for (i=0;i<nbLignejTable52 && trouve2==false; i++){
+                Object equipement=NewJFrame.jTable5.getValueAt(i, 0);
+                String nomEquipement=equipement.toString();
+                Object equipementAdr=NewJFrame.jTable5.getValueAt(i, 1);
+                String adresseEquipement=equipementAdr.toString();
+                
+                if(nomEquipement.equals(equipementImpacte.getNom())==true && adresseEquipement.equals(equipementImpacte.getAdresse())==true){
+                    //changer état dans la table:
+                    
+                    NewJFrame.etmSimu.supprEquipement(i);
+                    equipementImpacte.setEtat("HS");
+                    Equipement eq= new Equipement(equipementImpacte.getNom(), equipementImpacte.getAdresse(), equipementImpacte.getType(), equipementImpacte.getSalle(), equipementImpacte.getOs(), equipementImpacte.getEtat());
+                    NewJFrame.etmSimu.addEquipement(eq);
+                            
+                    trouve2=true;
+                }
+                
+            }//fin for
+            
+            if (equipementImpacte.getType().equals("Switch")==true|| equipementImpacte.getType().equals("Routeur")==true){
+                impacter (equipementImpacte.getNom());
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+           
+            }
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+    }
+    
+    public static Equipement selectEquipement(int idEqu){
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //Recupérer les ordinateurs:
+            Statement selectEquipement = connexion.createStatement();
+            ResultSet resultat2 = selectEquipement.executeQuery( "SELECT nom, typeA, adrMac, idS, idO, etat  FROM appareils WHERE idA='"+idEqu+"';" );
+            //Boucle permettant de récupérer tous les ordinateurs:
+            while ( resultat2.next() ) {
+            //int idAppareil = resultat2.getInt( "idA" );
+            String nomAppareil = resultat2.getString( "nom" );
+            String typeAppareil = resultat2.getString( "typeA" );
+            String adrMacAppareil = resultat2.getString( "adrMac" );
+            int idSalleAppareil = resultat2.getInt( "idS" );
+            int idOs = resultat2.getInt( "idO" );
+            String etatAppareil = resultat2.getString( "etat" );
+            
+            String nomSalleAppareil=selectNomSalle(idSalleAppareil);
+            String nomOs=selectNomOs(idOs);
+            
+            
+            Equipement e=new Equipement(nomAppareil, adrMacAppareil, typeAppareil, nomSalleAppareil, nomOs, etatAppareil);
+            return e;
+           // System.out.println("nom:"+nomApp+"  adresse:"+adresseLocal);
+            //jComboBox4.addItem(nomLocal);
+            }
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+           
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
+    
     
 }

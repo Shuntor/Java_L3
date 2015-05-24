@@ -22,6 +22,10 @@ public class Equipement {
         
     }
 
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     public String getNom() {
         return nom;  }
     
