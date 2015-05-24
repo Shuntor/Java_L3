@@ -994,6 +994,40 @@ public class MainDataBase {
         
     }
     
+    public static void supprConnexionEquipement(String equipement){
+        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
+        String utilisateur = "root";
+        String motDePasse = "";
+        
+        try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
+            //INSERER UN lOCAL
+            Statement delConnexion = connexion.createStatement();
+            int idEquipement;
+            idEquipement=selectIdEquipement(equipement);
+            //String requeteInsertLocal=("\"INSERT INTO Locaux (idL, nom, adresse) VALUES (1, '".concat(nom).concat("', '").concat(adresse).concat("');\"") );
+            
+            
+            
+            
+            
+            int statut = delConnexion.executeUpdate("DELETE FROM Connecter WHERE (idAppareilA ='"+idEquipement+"') OR (idAppareilB ='"+idEquipement+"');" );
+            
+            
+            
+            
+            /* Ici, nous placerons nos requêtes vers la BDD */
+            /* ... */
+          
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        
+    }
+    
+   
+    
     public static void reinit_etmSimu(){
         String url = "jdbc:mysql://localhost:3306/bdgestionparc";
         String utilisateur = "root";

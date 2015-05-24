@@ -6,6 +6,7 @@ package interface_graphique.projetgestparc;
 
 
 import database.MainDataBase;
+import database.Verifications;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -146,6 +147,8 @@ public class NewJFrame extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jToggleButton2 = new javax.swing.JToggleButton();
         jButton16 = new javax.swing.JButton();
+        jDialogNomIncorecte = new javax.swing.JDialog();
+        jButton18 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -1163,6 +1166,29 @@ public class NewJFrame extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jDialogNomIncorecte.setTitle("Nom déjà utilisé");
+        jDialogNomIncorecte.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogNomIncorecte.setModal(true);
+
+        jButton18.setText("OK");
+
+        javax.swing.GroupLayout jDialogNomIncorecteLayout = new javax.swing.GroupLayout(jDialogNomIncorecte.getContentPane());
+        jDialogNomIncorecte.getContentPane().setLayout(jDialogNomIncorecteLayout);
+        jDialogNomIncorecteLayout.setHorizontalGroup(
+            jDialogNomIncorecteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogNomIncorecteLayout.createSequentialGroup()
+                .addContainerGap(231, Short.MAX_VALUE)
+                .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
+        );
+        jDialogNomIncorecteLayout.setVerticalGroup(
+            jDialogNomIncorecteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogNomIncorecteLayout.createSequentialGroup()
+                .addContainerGap(245, Short.MAX_VALUE)
+                .addComponent(jButton18)
+                .addGap(32, 32, 32))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("projet stri");
 
@@ -1666,16 +1692,33 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton36ActionPerformed
 
     private void jButton37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton37MouseClicked
-        MainDataBase.addEquipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString(), jComboBox7.getSelectedItem().toString(),jComboBox9.getSelectedItem().toString());
+        if (Verifications.verifNomEquipement(jTFAjoutEquipementNom.getText())){
+            if (Verifications.verifAdresseEquipement(jTFAjoutEquipementAdresse.getText())){
         
-        Equipement e=new Equipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(),jComboBox9.getSelectedItem().toString(),jComboBox7.getSelectedItem().toString(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString());
-        etm.addEquipement(e);
-        etmSimu.addEquipement(e);
+                MainDataBase.addEquipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString(), jComboBox7.getSelectedItem().toString(),jComboBox9.getSelectedItem().toString());
+        
+                Equipement e=new Equipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(),jComboBox9.getSelectedItem().toString(),jComboBox7.getSelectedItem().toString(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString());
+                etm.addEquipement(e);
+                etmSimu.addEquipement(e);
+            
         
         
         
-        
-        jDialogAjoutEquiment.dispose();
+                jDialogAjoutEquiment.dispose();
+            }
+            else{
+             JOptionPane jOptionAdresseIncorrect;
+            //Boîte du message d'erreur:
+            jOptionAdresseIncorrect = new JOptionPane();
+            jOptionAdresseIncorrect.showMessageDialog(null, "ERREUR: Adresse MAC déja utilisée ["+jTFAjoutEquipementAdresse.getText()+"]", "Erreur", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+            JOptionPane jOptionNomIncorrect;
+            //Boîte du message d'erreur:
+            jOptionNomIncorrect = new JOptionPane();
+            jOptionNomIncorrect.showMessageDialog(null, "ERREUR: Nom déja utilisé ["+jTFAjoutEquipementNom.getText()+"]", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton37MouseClicked
 
@@ -1706,14 +1749,23 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton38ActionPerformed
 
     private void jButton39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton39MouseClicked
-        MainDataBase.addLocaux(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
-        //MainDataBase.initApp();
+        if(Verifications.verifNomLocal(jTFAjoutNomLocal.getText())){
+            MainDataBase.addLocaux(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
+            //MainDataBase.initApp();
         
-        Locals l=new Locals(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
-        ltm.addLocal(l);
-        jComboBox4.addItem(jTFAjoutNomLocal.getText());
-        jComboBox5.addItem(jTFAjoutNomLocal.getText());
-        jDialogAjoutLocal.dispose();
+            Locals l=new Locals(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
+            ltm.addLocal(l);
+            jComboBox4.addItem(jTFAjoutNomLocal.getText());
+            jComboBox5.addItem(jTFAjoutNomLocal.getText());
+            jDialogAjoutLocal.dispose();
+        }
+        else{
+            JOptionPane jOptionNomIncorrectLocal;
+            //Boîte du message d'erreur:
+            jOptionNomIncorrectLocal = new JOptionPane();
+            jOptionNomIncorrectLocal.showMessageDialog(null, "ERREUR: Nom déja utilisé ["+jTFAjoutNomLocal.getText()+"]", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton39MouseClicked
 
@@ -1771,14 +1823,23 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton45MouseClicked
 
     private void jButton45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton45ActionPerformed
-        MainDataBase.addSalles(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
+        if(Verifications.verifNomSalle(jTFAjoutNomSalle.getText())){
         
-        Salle s=new Salle(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
-        stm.addSalle(s);
-        jComboBox2.addItem(jTFAjoutNomSalle.getText());
-        jComboBox7.addItem(jTFAjoutNomSalle.getText());
+            MainDataBase.addSalles(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
         
-        jDialogAjoutSalle.dispose();
+            Salle s=new Salle(jTFAjoutNomSalle.getText(), jComboBox5.getSelectedItem().toString());
+            stm.addSalle(s);
+            jComboBox2.addItem(jTFAjoutNomSalle.getText());
+            jComboBox7.addItem(jTFAjoutNomSalle.getText());
+        
+            jDialogAjoutSalle.dispose();
+        }
+        else{
+            JOptionPane jOptionNomIncorrectSalle;
+            //Boîte du message d'erreur:
+            jOptionNomIncorrectSalle = new JOptionPane();
+            jOptionNomIncorrectSalle.showMessageDialog(null, "ERREUR: Nom déja utilisé ["+jTFAjoutNomSalle.getText()+"]", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton45ActionPerformed
 
@@ -1804,7 +1865,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton49MouseClicked
 
-    //Suppression d'un local et donc de ses équipements.
+    //Suppression d'une salle et donc de ses équipements:
     private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
         int ligneSelectionne2 = jTable3.getSelectedRow();
         //on récupére la valeur de la première colonne de la ligne sélectionné
@@ -1840,6 +1901,45 @@ public class NewJFrame extends javax.swing.JFrame {
             
               if(salleEqu.equals(nomSalle) == true)
               {
+                  
+                boolean fin3=false;
+                int b;
+                while(!fin3){
+                    boolean trouve3=false;
+                    int nbLignejTable4=jTable4.getRowCount();
+                    System.out.println("nbLignejTable4="+nbLignejTable4);
+                    b=0;
+                    while(b<nbLignejTable4 && !trouve3){ 
+              
+                    Object equA=jTable4.getValueAt(b, 0);
+                    String nomEquA=equA.toString();
+                    Object equB=jTable4.getValueAt(b, 1);
+                    String nomEquB=equB.toString();
+                                                
+                    if(nomEqu.equals(nomEquA) == true ||nomEqu.equals(nomEquB))
+                    {
+                        ctm.supprConnexion(b);                                        
+                        MainDataBase.supprConnexionEquipement(nomEqu);
+                        trouve3=true;
+                    }//if
+                    b++;
+                }//for
+            
+                if(nbLignejTable4==0){
+                    if (nbLignejTable4 == b-1)
+                    {
+                        fin3=true;
+                    }  
+                }
+            
+                else{
+                    if (nbLignejTable4 == b)
+                    {
+                        fin3=true;
+                    }
+                    }
+            
+                }//while 
                   etm.supprEquipement(i);
                   etmSimu.supprEquipement(i);
                   MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
@@ -1906,13 +2006,21 @@ public class NewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton51MouseClicked
 
     private void jButton51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton51ActionPerformed
-        MainDataBase.addOs(jTextField92.getText(), jTextField91.getText());
+        if (Verifications.verifNomVersionOs(jTextField92.getText()+"-"+jTextField91.getText())){
+            MainDataBase.addOs(jTextField92.getText(), jTextField91.getText());
         
         
-        jComboBoxAjoutEquipementOs.addItem(jTextField92.getText()+"-"+jTextField91.getText());
-        jComboBox8.addItem(jTextField92.getText()+"-"+jTextField91.getText());
+            jComboBoxAjoutEquipementOs.addItem(jTextField92.getText()+"-"+jTextField91.getText());
+            jComboBox8.addItem(jTextField92.getText()+"-"+jTextField91.getText());
         
-        jDialogAjoutOs.dispose();
+            jDialogAjoutOs.dispose();
+        }
+        else{
+        JOptionPane jOptionNomIncorrectOs;
+            //Boîte du message d'erreur:
+            jOptionNomIncorrectOs = new JOptionPane();
+            jOptionNomIncorrectOs.showMessageDialog(null, "ERREUR: Os déja utilisé ["+jTextField92.getText()+"-"+jTextField91.getText()+"]", "Erreur", JOptionPane.ERROR_MESSAGE);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton51ActionPerformed
 
@@ -1933,7 +2041,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7MouseClicked
 
-    //Suppression d'un équipement.
+    //Suppression d'un équipement:
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         int ligneSelectionne = jTable1.getSelectedRow();
         //on récupére la valeur de la première colonne de la ligne sélectionné
@@ -1950,6 +2058,46 @@ public class NewJFrame extends javax.swing.JFrame {
         Object osEquipement=jTable1.getValueAt(ligneSelectionne, 5);
         String osEqu=osEquipement.toString();
         System.out.println("ligneSelectionne="+ligneSelectionne);
+        
+        boolean fin3=false;
+        int b;
+        while(!fin3){
+            boolean trouve3=false;
+            int nbLignejTable4=jTable4.getRowCount();
+            System.out.println("nbLignejTable4="+nbLignejTable4);
+            b=0;
+            while(b<nbLignejTable4 && !trouve3){ 
+              
+                Object equA=jTable4.getValueAt(b, 0);
+                String nomEquA=equA.toString();
+                Object equB=jTable4.getValueAt(b, 1);
+                String nomEquB=equB.toString();
+                                                
+                if(nomEqu.equals(nomEquA) == true ||nomEqu.equals(nomEquB))
+                {
+                    ctm.supprConnexion(b);                                        
+                    MainDataBase.supprConnexionEquipement(nomEqu);
+                    trouve3=true;
+                }//if
+                b++;
+            }//for
+            
+            if(nbLignejTable4==0){
+                if (nbLignejTable4 == b-1)
+                {
+                    fin3=true;
+                }  
+            }
+            
+            else{
+                if (nbLignejTable4 == b)
+                {
+                    fin3=true;
+                }
+            }
+            
+        }//while 
+        
         etm.supprEquipement(ligneSelectionne);
         etmSimu.supprEquipement(ligneSelectionne);
         MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
@@ -1961,7 +2109,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
-
+    
+    //Supression d'un local et donc de ses salles et des équipements à l'interieur:
     private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
         int ligneSelectionne3 = jTable2.getSelectedRow();
         //on récupére la valeur de la première colonne de la ligne sélectionné
@@ -2018,6 +2167,44 @@ public class NewJFrame extends javax.swing.JFrame {
             
                         if(salleEqu.equals(nomSalle) == true)
                         {
+                            boolean fin3=false;
+                            int b;
+                            while(!fin3){
+                                boolean trouve3=false;
+                                int nbLignejTable4=jTable4.getRowCount();
+                                System.out.println("nbLignejTable4="+nbLignejTable4);
+                                b=0;
+                                while(b<nbLignejTable4 && !trouve3){ 
+              
+                                    Object equA=jTable4.getValueAt(b, 0);
+                                    String nomEquA=equA.toString();
+                                    Object equB=jTable4.getValueAt(b, 1);
+                                    String nomEquB=equB.toString();
+                                                
+                                    if(nomEqu.equals(nomEquA) == true ||nomEqu.equals(nomEquB))
+                                    {
+                                        ctm.supprConnexion(b);                                        
+                                        MainDataBase.supprConnexionEquipement(nomEqu);
+                                        trouve3=true;
+                                    }//if
+                                    b++;
+                                }//for
+            
+                                if(nbLignejTable4==0){
+                                    if (nbLignejTable4 == b-1)
+                                    {
+                                        fin3=true;
+                                    }  
+                                }
+            
+                                else{
+                                    if (nbLignejTable4 == b)
+                                    {
+                                        fin3=true;
+                                    }
+                                }
+            
+                            }//while 
                             
                             etm.supprEquipement(a);
                             etmSimu.supprEquipement(a);
@@ -2199,6 +2386,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton36;
@@ -2247,6 +2435,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogModifEquipement;
     private javax.swing.JDialog jDialogModifLocal;
     private javax.swing.JDialog jDialogModifSalle;
+    private javax.swing.JDialog jDialogNomIncorecte;
     private javax.swing.JDialog jDialogSupprEquipement;
     private javax.swing.JDialog jDialogSupprLocal;
     private javax.swing.JDialog jDialogSupprSalle;
