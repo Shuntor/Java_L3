@@ -9,6 +9,7 @@ import database.MainDataBase;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import parcinfo.Connexion;
 import parcinfo.Equipement;
 
 /**
@@ -20,6 +21,8 @@ public class NewJFrame extends javax.swing.JFrame {
     public static EquipementTableModel etm;
     public static LocalsTableModel ltm;
     public static SalleTableModel stm;
+    public static ConnexionTableModel ctm;
+    public static EquipementTableModel etmSimu;
     /**
      * Creates new form NewJFrame
      */
@@ -29,8 +32,11 @@ public class NewJFrame extends javax.swing.JFrame {
         etm=new EquipementTableModel();
         ltm=new LocalsTableModel();
         stm=new SalleTableModel();
+        ctm=new ConnexionTableModel();
+        etmSimu=new EquipementTableModel();
         
         initComponents();
+        setLocationRelativeTo(null);
         
         
         //initComponents();
@@ -97,6 +103,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jTFModifNomLocal = new javax.swing.JTextField();
         jLabel102 = new javax.swing.JLabel();
         jDialogSupprLocal = new javax.swing.JDialog();
+        jButton13 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
         jDialogAjoutSalle = new javax.swing.JDialog();
         jPanel24 = new javax.swing.JPanel();
         jButton44 = new javax.swing.JButton();
@@ -126,6 +135,17 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField91 = new javax.swing.JTextField();
         jTextField92 = new javax.swing.JTextField();
         jLabel110 = new javax.swing.JLabel();
+        jDialogConnexions = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jButton15 = new javax.swing.JButton();
+        jComboBox10 = new javax.swing.JComboBox();
+        jComboBox11 = new javax.swing.JComboBox();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jButton16 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
@@ -148,6 +168,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jComboBox8 = new javax.swing.JComboBox();
         jButton6 = new javax.swing.JButton();
+        jButtonConnexion = new javax.swing.JToggleButton();
         jPanel4 = new javax.swing.JPanel();
         jTFNomSalle = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -168,8 +189,15 @@ public class NewJFrame extends javax.swing.JFrame {
         jBAdd = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTable5 = new javax.swing.JTable();
+        jComboBox12 = new javax.swing.JComboBox();
+        jLabel16 = new javax.swing.JLabel();
+        jButtonNouvelleSimu = new javax.swing.JButton();
 
         jDialogAjoutEquiment.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutEquiment.setLocationRelativeTo(null);
         jDialogAjoutEquiment.setModal(true);
 
         jButton36.setText("Annuler");
@@ -295,6 +323,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogModifEquipement.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogModifEquipement.setLocationRelativeTo(null);
         jDialogModifEquipement.setModal(true);
 
         jButton40.setText("Annuler");
@@ -417,6 +446,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogSupprEquipement.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogSupprEquipement.setLocationRelativeTo(null);
         jDialogSupprEquipement.setModal(true);
 
         jLabel9.setText("Etes-vous sûr de vouloir supprimer l'équipement ?");
@@ -479,6 +509,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogAjoutLocal.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutLocal.setLocationRelativeTo(null);
         jDialogAjoutLocal.setModal(true);
 
         jButton38.setText("Annuler");
@@ -494,6 +525,7 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         jButton39.setText("OK");
+        jButton39.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton39.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton39MouseClicked(evt);
@@ -568,6 +600,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogModifLocal.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogModifLocal.setLocationRelativeTo(null);
         jDialogModifLocal.setModal(true);
 
         jButton42.setText("Annuler");
@@ -652,20 +685,53 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogSupprLocal.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogSupprLocal.setLocationRelativeTo(null);
         jDialogSupprLocal.setModal(true);
+
+        jButton13.setText("OK");
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton13MouseClicked(evt);
+            }
+        });
+
+        jButton14.setText("Annuler");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Etes-vous sûre de vouloir supprimer cette salle?");
 
         javax.swing.GroupLayout jDialogSupprLocalLayout = new javax.swing.GroupLayout(jDialogSupprLocal.getContentPane());
         jDialogSupprLocal.getContentPane().setLayout(jDialogSupprLocalLayout);
         jDialogSupprLocalLayout.setHorizontalGroup(
             jDialogSupprLocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogSupprLocalLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(jDialogSupprLocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
+                    .addGroup(jDialogSupprLocalLayout.createSequentialGroup()
+                        .addComponent(jButton14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34))
         );
         jDialogSupprLocalLayout.setVerticalGroup(
             jDialogSupprLocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogSupprLocalLayout.createSequentialGroup()
+                .addGap(101, 101, 101)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(jDialogSupprLocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton13)
+                    .addComponent(jButton14))
+                .addGap(33, 33, 33))
         );
 
         jDialogAjoutSalle.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutSalle.setLocationRelativeTo(null);
         jDialogAjoutSalle.setModal(true);
 
         jButton44.setText("Annuler");
@@ -751,6 +817,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogModifSalle.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogModifSalle.setLocationRelativeTo(null);
         jDialogModifSalle.setModal(true);
 
         jButton46.setText("Annuler");
@@ -838,6 +905,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogSupprSalle.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogSupprSalle.setLocationRelativeTo(null);
         jDialogSupprSalle.setModal(true);
 
         jButton48.setText("Annuler");
@@ -900,6 +968,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogAjoutOs.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogAjoutOs.setLocationRelativeTo(null);
         jDialogAjoutOs.setModal(true);
 
         jButton50.setText("Annuler");
@@ -994,10 +1063,114 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jDialogConnexions.setMinimumSize(new java.awt.Dimension(400, 380));
+        jDialogConnexions.setModal(true);
+        jDialogConnexions.setLocationRelativeTo(null);
+
+        jButton15.setText("<< Lier >>");
+        jButton15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton15MouseClicked(evt);
+            }
+        });
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Equipement A:");
+
+        jLabel15.setText("Equipement B:");
+
+        jTable4.setModel(ctm);
+        jScrollPane5.setViewportView(jTable4);
+
+        jToggleButton2.setText("OK");
+        jToggleButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton2MouseClicked(evt);
+            }
+        });
+
+        jButton16.setText("Supprimer");
+        jButton16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton16MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(jButton15)
+                        .addGap(42, 42, 42)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15))
+                .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jButton16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton15)
+                    .addComponent(jComboBox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton2)
+                    .addComponent(jButton16))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jDialogConnexionsLayout = new javax.swing.GroupLayout(jDialogConnexions.getContentPane());
+        jDialogConnexions.getContentPane().setLayout(jDialogConnexionsLayout);
+        jDialogConnexionsLayout.setHorizontalGroup(
+            jDialogConnexionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jDialogConnexionsLayout.setVerticalGroup(
+            jDialogConnexionsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("projet stri");
 
         jTabbedPane4.setToolTipText("");
+        jTabbedPane4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane4MouseClicked(evt);
+            }
+        });
 
         jPanel2.setToolTipText("");
 
@@ -1068,6 +1241,18 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButtonConnexion.setText("Gérer les connexions");
+        jButtonConnexion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonConnexionMouseClicked(evt);
+            }
+        });
+        jButtonConnexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConnexionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -1116,7 +1301,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(303, 303, 303)
+                .addGap(99, 99, 99)
+                .addComponent(jButtonConnexion)
+                .addGap(99, 99, 99)
                 .addComponent(jButton4)
                 .addGap(172, 172, 172))
         );
@@ -1152,7 +1339,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButtonConnexion))
                 .addGap(55, 55, 55))
         );
 
@@ -1339,6 +1527,49 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Locaux", jPanel3);
 
+        jTable5.setModel(etmSimu);
+        jScrollPane6.setViewportView(jTable5);
+
+        jLabel16.setText("Equipement Hors Service:");
+
+        jButtonNouvelleSimu.setText("Nouvelle Simultaion");
+        jButtonNouvelleSimu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonNouvelleSimuMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1007, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(341, 341, 341)
+                        .addComponent(jButtonNouvelleSimu)))
+                .addContainerGap(77, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16)
+                    .addComponent(jButtonNouvelleSimu))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
+
+        jTabbedPane4.addTab("Simulation", jPanel7);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -1428,7 +1659,7 @@ public class NewJFrame extends javax.swing.JFrame {
         
         Equipement e=new Equipement(jTFAjoutEquipementNom.getText(),jTFAjoutEquipementAdresse.getText(),jComboBox9.getSelectedItem().toString(),jComboBox7.getSelectedItem().toString(), jComboBoxAjoutEquipementOs.getSelectedItem().toString(), jComboBoxAjoutEquipementEtat.getSelectedItem().toString());
         etm.addEquipement(e);
-
+        etmSimu.addEquipement(e);
         
         
         
@@ -1465,7 +1696,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void jButton39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton39MouseClicked
         MainDataBase.addLocaux(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
-        MainDataBase.initApp();
+        //MainDataBase.initApp();
         
         Locals l=new Locals(jTFAjoutNomLocal.getText(), jTFAjoutAdresseLocal.getText());
         ltm.addLocal(l);
@@ -1562,24 +1793,27 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton49MouseClicked
 
+    //Suppression d'un local et donc de ses équipements.
     private void jButton49ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton49ActionPerformed
         int ligneSelectionne2 = jTable3.getSelectedRow();
         //on récupére la valeur de la première colonne de la ligne sélectionné
         Object nomSalle=jTable3.getValueAt(ligneSelectionne2, 0);
         String nomS=nomSalle.toString();
-        Object localSalle=jTable1.getValueAt(ligneSelectionne2, 1);
+        Object localSalle=jTable3.getValueAt(ligneSelectionne2, 1);
         String localS=localSalle.toString(); 
         stm.supprSalle(ligneSelectionne2);
         jComboBox2.removeItem(nomSalle);
         jComboBox7.removeItem(nomSalle);
         
-        int i;
-        
-        int verif=0;
-        while(verif==0){
+        boolean fin=false;
+        int i, lignePrise=0;
+        while(!fin){
+            boolean trouve=false;
             int nbLignejTable1=jTable1.getRowCount();
             System.out.println("nbLignejTable1="+nbLignejTable1);
-            for (i=0;i<nbLignejTable1;i++){            
+            i=0;
+            while(i<nbLignejTable1 && !trouve){ 
+              
               Object nomEquipement=jTable1.getValueAt(i, 0);
               String nomEqu=nomEquipement.toString();
               Object adresseEquipement=jTable1.getValueAt(i, 1);
@@ -1596,13 +1830,28 @@ public class NewJFrame extends javax.swing.JFrame {
               if(salleEqu.equals(nomSalle) == true)
               {
                   etm.supprEquipement(i);
+                  etmSimu.supprEquipement(i);
                   MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
-                  break;
+                  trouve=true;
+                  
               }//if
+              i++;
             }//for
-            if(i==nbLignejTable1){
-                verif=1;
+            
+            if(nbLignejTable1==0){
+                if (nbLignejTable1 == i)
+                {
+                    fin=true;
+                }
             }
+            
+            else{
+                if (nbLignejTable1-1 == i)
+                {
+                    fin=true;
+                }
+            }
+            
         }//while
         MainDataBase.supprSalle(nomS, localS);
         
@@ -1673,6 +1922,7 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7MouseClicked
 
+    //Suppression d'un équipement.
     private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
         int ligneSelectionne = jTable1.getSelectedRow();
         //on récupére la valeur de la première colonne de la ligne sélectionné
@@ -1690,11 +1940,189 @@ public class NewJFrame extends javax.swing.JFrame {
         String osEqu=osEquipement.toString();
         System.out.println("ligneSelectionne="+ligneSelectionne);
         etm.supprEquipement(ligneSelectionne);
+        etmSimu.supprEquipement(ligneSelectionne);
         MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
         //jTable1.removeRowSelectionInterval(ligneSelectionne, ligneSelectionne);
         jDialogSupprEquipement.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseClicked
+        int ligneSelectionne3 = jTable2.getSelectedRow();
+        //on récupére la valeur de la première colonne de la ligne sélectionné
+        Object nomLocal=jTable2.getValueAt(ligneSelectionne3, 0);
+        String nomL=nomLocal.toString();
+        Object adresseLocal=jTable2.getValueAt(ligneSelectionne3, 1);
+        String adresseL=adresseLocal.toString(); 
+        ltm.supprLocal(ligneSelectionne3);
+        jComboBox4.removeItem(nomLocal);
+        jComboBox5.removeItem(nomLocal);
+        
+        boolean fin=false;
+        int i;
+        while(!fin){
+            boolean trouve=false;
+            int nbLignejTable3=jTable3.getRowCount();
+            System.out.println("nbLignejTable3="+nbLignejTable3);
+            i=0;
+            while(i<nbLignejTable3 && !trouve){ 
+              
+              Object nomSalle=jTable3.getValueAt(i, 0);
+              String nomS=nomSalle.toString();
+              Object localSalle=jTable3.getValueAt(i, 1);
+              String localS=localSalle.toString();
+              
+              
+              
+            
+              if(localS.equals(nomLocal) == true)
+              {
+                  
+                  
+                  boolean fin2=false;
+                  int a;
+                  while(!fin2){
+                    boolean trouve2=false;
+                    int nbLignejTable1=jTable1.getRowCount();
+                    System.out.println("nbLignejTable1="+nbLignejTable1);
+                    a=0;
+                    while(a<nbLignejTable1 && !trouve2){ 
+              
+                        Object nomEquipement=jTable1.getValueAt(i, 0);
+                        String nomEqu=nomEquipement.toString();
+                        Object adresseEquipement=jTable1.getValueAt(i, 1);
+                        String adresseEqu=adresseEquipement.toString();
+                        Object typeEquipement=jTable1.getValueAt(i, 2);
+                        String typeEqu=typeEquipement.toString();
+                        Object salleEquipement=jTable1.getValueAt(i, 3);
+                        String salleEqu=salleEquipement.toString();
+                        Object etatEquipement=jTable1.getValueAt(i, 4);
+                        String etatEqu=etatEquipement.toString();
+                        Object osEquipement=jTable1.getValueAt(i, 5);
+                        String osEqu=osEquipement.toString();
+            
+                        if(salleEqu.equals(nomSalle) == true)
+                        {
+                            
+                            etm.supprEquipement(a);
+                            etmSimu.supprEquipement(a);
+                            MainDataBase.supprEquipement(nomEqu, adresseEqu, typeEqu, salleEqu, etatEqu, osEqu);
+                            trouve2=true;
+                        }//if
+                        a++;
+                    }//for
+            
+                    if(nbLignejTable1==0){
+                        if (nbLignejTable1 == a-1)
+                        {
+                            fin2=true;
+                        }  
+                    }
+            
+                    else{
+                        if (nbLignejTable1 == a)
+                        {
+                            fin2=true;
+                        }
+                    }
+            
+                }//while  
+                
+                stm.supprSalle(i);
+                MainDataBase.supprSalle(nomS, localS);
+                jComboBox2.removeItem(nomSalle);
+                jComboBox7.removeItem(nomSalle);
+                trouve=true;
+                  
+              }//if
+              i++;
+            }//for
+            
+            if(nbLignejTable3==0){
+                if (nbLignejTable3 == i-1)
+                {
+                    fin=true;
+                    
+                }
+            }
+            
+            else{
+                if (nbLignejTable3 == i)
+                {
+                    fin=true;
+                }
+            }
+            
+            System.out.println("fin="+fin);    
+        }//while
+        MainDataBase.supprLocal(nomL, adresseL);
+        
+        jDialogSupprLocal.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13MouseClicked
+
+    private void jButtonConnexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnexionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConnexionActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButtonConnexionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConnexionMouseClicked
+        jComboBox10.removeAllItems();
+        jComboBox11.removeAllItems();
+        MainDataBase.listesConnexionOrdinateurs();
+        jDialogConnexions.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonConnexionMouseClicked
+
+    private void jToggleButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton2MouseClicked
+        jDialogConnexions.dispose();
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton2MouseClicked
+
+    private void jButton15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton15MouseClicked
+        MainDataBase.addConnexion(jComboBox11.getSelectedItem().toString(),jComboBox10.getSelectedItem().toString());
+        
+        Connexion c=new Connexion(jComboBox11.getSelectedItem().toString(),jComboBox10.getSelectedItem().toString());
+        ctm.addConnexion(c);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15MouseClicked
+
+    private void jTabbedPane4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane4MouseClicked
+        jComboBox12.removeAllItems();
+        
+        MainDataBase.listesConnexionOrdinateurs();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabbedPane4MouseClicked
+
+    private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
+        int ligneSelectionne4 = jTable4.getSelectedRow();
+        Object equipementA=jTable4.getValueAt(ligneSelectionne4, 0);
+        String equA=equipementA.toString();
+        Object equipementB=jTable4.getValueAt(ligneSelectionne4, 1);
+        String equB=equipementB.toString();
+        
+        MainDataBase.supprConnexion(equA, equB);
+        ctm.supprConnexion(ligneSelectionne4);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButtonNouvelleSimuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNouvelleSimuMouseClicked
+        int nbLignesjTable5=jTable5.getRowCount();
+        
+        for (int i=0; i<nbLignesjTable5; i++){
+            etmSimu.supprEquipement(0);
+        }
+        MainDataBase.reinit_etmSimu();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonNouvelleSimuMouseClicked
 
    
     
@@ -1733,6 +2161,7 @@ public class NewJFrame extends javax.swing.JFrame {
                 MainDataBase.initApp ();
                 
                 
+                
                 //MainDataBase.initAppAppareils();
            
             }
@@ -1744,6 +2173,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton36;
@@ -1768,7 +2201,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JToggleButton jButtonConnexion;
+    private javax.swing.JButton jButtonNouvelleSimu;
     private javax.swing.JComboBox jComboBox1;
+    public static javax.swing.JComboBox jComboBox10;
+    public static javax.swing.JComboBox jComboBox11;
+    public static javax.swing.JComboBox jComboBox12;
     public static javax.swing.JComboBox jComboBox2;
     private javax.swing.JComboBox jComboBox3;
     public static javax.swing.JComboBox jComboBox4;
@@ -1783,6 +2221,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JDialog jDialogAjoutLocal;
     private javax.swing.JDialog jDialogAjoutOs;
     private javax.swing.JDialog jDialogAjoutSalle;
+    private javax.swing.JDialog jDialogConnexions;
     private javax.swing.JDialog jDialogModifEquipement;
     private javax.swing.JDialog jDialogModifLocal;
     private javax.swing.JDialog jDialogModifSalle;
@@ -1801,6 +2240,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel110;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1835,9 +2278,13 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextField jTFAdresseLocal;
     private javax.swing.JTextField jTFAjoutAdresseLocal;
     private javax.swing.JTextField jTFAjoutEquipementAdresse;
@@ -1854,6 +2301,8 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField83;
     private javax.swing.JTextField jTextField84;
@@ -1862,5 +2311,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField87;
     private javax.swing.JTextField jTextField91;
     private javax.swing.JTextField jTextField92;
+    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

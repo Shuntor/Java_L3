@@ -70,4 +70,9 @@ public class LocalsTableModel extends DefaultTableModel {
         lcl.add(lc);
         fireTableStructureChanged();
     }
+    
+    public void supprLocal(int row) {
+        lcl.remove(row);
+        fireTableStructureChanged();
+    }
 }
