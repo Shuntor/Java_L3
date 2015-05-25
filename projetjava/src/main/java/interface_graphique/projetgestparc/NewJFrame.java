@@ -1555,6 +1555,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTabbedPane4.addTab("Locaux", jPanel3);
 
         jTable5.setModel(etmSimu);
+        jTable5.setDefaultRenderer(Object.class, new Couleur());
         jScrollPane6.setViewportView(jTable5);
 
         jLabel16.setText("Equipement Hors Service:");
