@@ -38,9 +38,9 @@ public class MainDataBase {
      *
      */
     public static void initApp () {
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse); //Recupérer les locaux:
@@ -195,9 +195,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -233,9 +233,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -271,9 +271,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -307,9 +307,9 @@ public class MainDataBase {
     
     public static void addLocaux (String nom, String adresse) {
         
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -365,9 +365,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -405,9 +405,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -442,9 +442,9 @@ public class MainDataBase {
     
     public static void addSalles (String nom, String nomLocal) {
         
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -473,9 +473,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -514,9 +514,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -549,9 +549,9 @@ public class MainDataBase {
     
     
     public static void addEquipement(String nomEquipement,String adresseEquipement, String osEquipement, String etatEquipement, String salleEquipement, String typeEquipement){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -592,9 +592,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -633,9 +633,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -672,9 +672,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -706,9 +706,9 @@ public class MainDataBase {
     }
     
     public static void addOs(String nomOs,String versionOs){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -737,9 +737,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -773,9 +773,9 @@ public class MainDataBase {
     }
     
     public static void supprEquipement(String nomEquipement, String adresseEquipement, String typeEquipement, String salleEquipement, String etatEquipement, String osEquipement){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -799,9 +799,9 @@ public class MainDataBase {
     }
     
     public static void supprSalle(String nom, String Local){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -825,9 +825,9 @@ public class MainDataBase {
     }
     
     public static void supprLocal(String nom, String adresse){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -859,9 +859,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -898,9 +898,9 @@ public class MainDataBase {
     
     
     public static void addConnexion(String equipementA, String equipementB){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -934,9 +934,9 @@ public class MainDataBase {
         } catch ( ClassNotFoundException e ) {
     /* Gérer les éventuelles erreurs ici. */
         }
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         //   Connection connexion = null;
         
          try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
@@ -967,9 +967,9 @@ public class MainDataBase {
     }
     
     public static void supprConnexion(String equA, String equB){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -995,9 +995,9 @@ public class MainDataBase {
     }
     
     public static void supprConnexionEquipement(String equipement){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //INSERER UN lOCAL
@@ -1029,9 +1029,9 @@ public class MainDataBase {
    
     
     public static void reinit_etmSimu(){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //Recupérer les ordinateurs:
@@ -1073,9 +1073,9 @@ public class MainDataBase {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     public static void impacter(String nomEquipementHS){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //Recupérer l'id de l'ordinateur concerné:
@@ -1159,9 +1159,9 @@ public class MainDataBase {
     }
     
     public static Equipement selectEquipement(int idEqu){
-        String url = "jdbc:mysql://localhost:3306/bdgestionparc";
-        String utilisateur = "root";
-        String motDePasse = "";
+        String url = InformationsConnexion.urlBD();
+        String utilisateur = InformationsConnexion.utilisateurBD();
+        String motDePasse = InformationsConnexion.mdpBD();
         
         try (Connection connexion = DriverManager.getConnection(url, utilisateur, motDePasse)){
             //Recupérer les ordinateurs:
