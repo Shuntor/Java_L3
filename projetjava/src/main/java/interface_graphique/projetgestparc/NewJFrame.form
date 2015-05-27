@@ -1388,7 +1388,7 @@
     </Container>
     <Container class="javax.swing.JDialog" name="jDialogCoBase">
       <Properties>
-        <Property name="title" type="java.lang.String" value="Premi&#xe8;re Connexion"/>
+        <Property name="title" type="java.lang.String" value="Premi&#xe8;re Connexion" postCode="jDialogCoBase.setLocationRelativeTo(null);"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[400, 380]"/>
         </Property>

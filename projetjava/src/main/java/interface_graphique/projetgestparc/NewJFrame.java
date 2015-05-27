@@ -1162,6 +1162,7 @@ public class NewJFrame extends javax.swing.JFrame {
         );
 
         jDialogCoBase.setTitle("Première Connexion");
+        jDialogCoBase.setLocationRelativeTo(null);
         jDialogCoBase.setMinimumSize(new java.awt.Dimension(400, 380));
         jDialogCoBase.setModal(true);
 
@@ -2048,9 +2049,10 @@ public class NewJFrame extends javax.swing.JFrame {
                   
                 boolean fin3=false;
                 int b;
+                int nbLignejTable4;
                 while(!fin3){
                     boolean trouve3=false;
-                    int nbLignejTable4=jTable4.getRowCount();
+                    nbLignejTable4=jTable4.getRowCount();
                     System.out.println("nbLignejTable4="+nbLignejTable4);
                     b=0;
                     while(b<nbLignejTable4 && !trouve3){ 
@@ -2070,10 +2072,10 @@ public class NewJFrame extends javax.swing.JFrame {
                 }//for
             
                 if(nbLignejTable4==0){
-                    if (nbLignejTable4 == b-1)
-                    {
+                    //if (nbLignejTable4 == b-1)
+                    //{
                         fin3=true;
-                    }  
+                    //}  
                 }
             
                 else{
@@ -2094,14 +2096,14 @@ public class NewJFrame extends javax.swing.JFrame {
             }//for
             
             if(nbLignejTable1==0){
-                if (nbLignejTable1 == i)
-                {
+                //if (nbLignejTable1 == i)
+                //{
                     fin=true;
-                }
+                //}
             }
             
             else{
-                if (nbLignejTable1-1 == i)
+                if (nbLignejTable1 == i)
                 {
                     fin=true;
                 }
@@ -2235,10 +2237,10 @@ public class NewJFrame extends javax.swing.JFrame {
             }//for
             
             if(nbLignejTable4==0){
-                if (nbLignejTable4 == b-1)
-                {
+                //if (nbLignejTable4 == b-1)
+                //{
                     fin3=true;
-                }  
+                //}  
             }
             
             else{
@@ -2343,10 +2345,10 @@ public class NewJFrame extends javax.swing.JFrame {
                                 }//for
             
                                 if(nbLignejTable4==0){
-                                    if (nbLignejTable4 == b-1)
-                                    {
+                                    //if (nbLignejTable4 == b-1)
+                                    //{
                                         fin3=true;
-                                    }  
+                                    //}  
                                 }
             
                                 else{
@@ -2367,10 +2369,10 @@ public class NewJFrame extends javax.swing.JFrame {
                     }//for
             
                     if(nbLignejTable1==0){
-                        if (nbLignejTable1 == a-1)
-                        {
+                        //if (nbLignejTable1 == a-1)
+                        //{
                             fin2=true;
-                        }  
+                        //}  
                     }
             
                     else{
@@ -2393,11 +2395,11 @@ public class NewJFrame extends javax.swing.JFrame {
             }//for
             
             if(nbLignejTable3==0){
-                if (nbLignejTable3 == i-1)
-                {
+                //if (nbLignejTable3 == i-1)
+                //{
                     fin=true;
                     
-                }
+                //}
             }
             
             else{
